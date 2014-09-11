@@ -71,5 +71,4 @@ private:
 };
 
 } /* streamlog */
-#include "./bits/loglevel.tcc"
 #endif
