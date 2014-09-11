@@ -79,3 +79,8 @@ logger(lvl1, std::clog) << "log text" << var;
 
 3 Adding a new type to output
 --------------------------------------------------------------------------
+Adding a new type to output only requires and overload of the type for
+`std::basic_ostream`, overloading for the `logstream` class should not be
+attempted as there is no gurantee that the correct overload will be
+seletecd. This may not raise any complier warnings or cause runtime errors
+as the type should still be sent to `std::basic_ostream`.
