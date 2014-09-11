@@ -2,8 +2,8 @@
 
 //          Copyright Sundeep S. Sangha 2013 - 2014.
 
-#ifndef STREAMLOG_LOGSTREAM_TCC
-#define STREAMLOG_LOGSTREAM_TCC
+#ifndef STREAMLOG_LOGGER_TCC
+#define STREAMLOG_LOGGER_TCC
 
 #include <limits>
 
@@ -13,7 +13,7 @@ namespace streamlog {
 template <typename CharT, typename Traits>
 streamlog::bits::logstream_stream<CharT, Traits> &
 logger(
-  logstream & _log
+  loglevel & _log
 , std::basic_ostream<CharT,Traits> & _stream
 ){
 streamlog::bits::logstream_base * iter = _log.log_obj;
