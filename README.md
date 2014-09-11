@@ -2,6 +2,11 @@ StreamLog
 ==========================================================================
 Status: Open Alpha
 
+A logging libray that aims to offer granular control over what is logged
+and where its logged. It also allows creating logs relative to one
+another, so that chagning global settings, adding or removing log levels
+does not break the code base.
+
 Documentation
 ==========================================================================
 + [Tutorial](./doc/tutorial.md)
