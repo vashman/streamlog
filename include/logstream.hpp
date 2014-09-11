@@ -70,10 +70,6 @@ private:
   logger(logstream &, std::basic_ostream<CharT,Traits> &);
 };
 
-template <typename CharT, typename Traits>
-streamlog::bits::logstream_stream<CharT,Traits> &
-logger(logstream &, std::basic_ostream<CharT,Traits> &);
-
 } /* streamlog */
 #include "./bits/logstream.tcc"
 #endif
