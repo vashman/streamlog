@@ -2,39 +2,39 @@
 
 //          Copyright Sundeep S. Sangha 2013 - 2014.
 
-#ifndef STREAMLOG_LOGSTREAM_HPP
-#define STREAMLOG_LOGSTREAM_HPP
+#ifndef STREAMLOG_LOGLEVEL_HPP
+#define STREAMLOG_LOGLEVEL_HPP
 
 #include <ostream>
 #include "bits/logstream_stream.hpp"
 
 namespace streamlog {
 
-class logstream{
+class loglevel{
 public:
   typedef int lvl_type;
 
-  logstream();
+  loglevel();
 
 #if __cplusplus >= 201103L
   explicit
-  logstream(
-    logstream const &
+  loglevel(
+    loglevel const &
   ) = default;
 
-  logstream &
+  loglevel &
   operator=(
-    logstream const &
+    loglevel const &
   ) = default;
 
   explicit
-  logstream(
-    logstream &&
+  loglevel(
+    loglevel &&
   ) = default;
 
-  logstream &
+  loglevel &
   operator=(
-    logstream &&
+    loglevel &&
   ) = default;
 #endif
 
@@ -54,16 +54,16 @@ public:
   loglvl();
 
   static lvl_type
-  loglvl(logstream const &);
+  loglvl(loglevel const &);
 
 private:
 	lvl_type lvl; // 0 equals an inactive log
 
   streamlog::bits::logstream_base * log_obj;
 
-	static lvl_type log_lvl;
+  static lvl_type log_lvl;
 
-	static lvl_type total;
+  static lvl_type total;
 
   template <typename CharT, typename Traits>
   friend streamlog::bits::logstream_stream<CharT,Traits> &
@@ -71,5 +71,5 @@ private:
 };
 
 } /* streamlog */
-#include "./bits/logstream.tcc"
+#include "./bits/loglevel.tcc"
 #endif
