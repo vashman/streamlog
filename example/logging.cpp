@@ -1,7 +1,8 @@
 #include <iostream>
-#include "../include/loglevel.hpp"
+#include "../include/logging.hpp"
 
 using streamlog::loglevel;
+using streamlog::logger;
 
 int main(){
 loglevel lvl1;
