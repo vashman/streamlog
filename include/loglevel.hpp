@@ -1,4 +1,4 @@
-// General logging with stream objects, with control of log levels and multiple sinks.
+// Logging levels, and level control.
 
 //          Copyright Sundeep S. Sangha 2013 - 2014.
 
@@ -12,9 +12,20 @@ namespace streamlog {
 
 class loglevel{
 public:
-  typedef int lvl_type;
+  /* unsigned int is used to avoid modulus with negative numbers when
+  checking activation, and deactivating the level. 
+  */
+  typedef unsigned int lvl_type;
 
-  loglevel();
+  loglevel(
+    bool _state = true
+  );
+
+  /* copy ctor with modifying level */
+  loglvel(
+    loglevel const &
+  , bool _state = true
+  );
 
 #if __cplusplus >= 201103L
   explicit

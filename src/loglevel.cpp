@@ -1,4 +1,6 @@
-//
+// loglevel implementation.
+
+//          Copyright Sundeep S. Sangha 2013 - 2014.
 
 #ifndef STREAMLOG_LOGLEVEL_CPP
 #define STREAMLOG_LOGLEVEL_CPP
@@ -11,11 +13,27 @@
 
 namespace streamlog {
 
-/* logstream ctor */
+/* loglevel ctor */
 loglevel::loglevel(
+  bool _state
 )
 	: lvl ((++loglevel::total)++)
   , log_obj (nullptr) {
+  if (_state == false){
+  this->deactivate();
+  }
+}
+
+/* loglevel ctor copy modify */
+loglevel::loglevel(
+  loglevel const & _lvl
+, bool _state
+)
+  : lvl (_lvl.lvl)
+  , log_obj (nullptr) {
+  if (_state == false){
+  this->deactivate();
+  }
 }
 
 /**/
