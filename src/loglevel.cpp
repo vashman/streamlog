@@ -17,7 +17,7 @@ namespace streamlog {
 loglevel::loglevel(
   bool _state
 )
-	: lvl ((++loglevel::total)++)
+  : lvl ((++loglevel::total)++)
   , log_obj (nullptr) {
   if (_state == false){
   this->deactivate();
