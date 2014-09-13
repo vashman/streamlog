@@ -9,6 +9,7 @@
 #include "../include/bits/logstream_base.hpp"
 
 #if __cplusplus < 201103L
+#include <stddef.h>
 #define nullptr NULL
 #endif
 

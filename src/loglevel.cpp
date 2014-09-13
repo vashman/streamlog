@@ -5,6 +5,7 @@
 #ifndef STREAMLOG_LOGLEVEL_CPP
 #define STREAMLOG_LOGLEVEL_CPP
 
+#include <limits>
 #include "../include/loglevel.hpp"
 
 #if __cplusplus < 201103L
@@ -41,7 +42,7 @@ bool
 loglevel::is_active(
 ) const {
   if (this->lvl != 0){
-    if (((this->lvl % 2) != 0) && (this->lvl <= loglevel::loglvl())){
+    if (((this->lvl % 2) != 0) && (this->lvl <= loglevel::getlevel())){
     return true;
     }
   }
@@ -57,13 +58,13 @@ return !this->is_active();
 
 /**/
 typename loglevel::lvl_type
-loglevel::loglvl(
+loglevel::getlevel(
 ){
 return loglevel::log_lvl;
 }
 
 typename loglevel::lvl_type
-loglevel::loglvl(
+loglevel::setlevel(
   loglevel const & _log
 ){
 typename loglevel::lvl_type temp = loglevel::log_lvl;

@@ -22,9 +22,9 @@ public:
   );
 
   /* copy ctor with modifying level */
-  loglvel(
+  loglevel(
     loglevel const &
-  , bool _state = true
+  , bool _state
   );
 
 #if __cplusplus >= 201103L
@@ -62,10 +62,10 @@ public:
   deactivate();
 
   static lvl_type
-  loglvl();
+  getlevel();
 
   static lvl_type
-  loglvl(loglevel const &);
+  setlevel(loglevel const &);
 
 private:
 	lvl_type lvl; // 0 equals an inactive log
@@ -78,7 +78,7 @@ private:
 
   template <typename CharT, typename Traits>
   friend streamlog::bits::logstream_stream<CharT,Traits> &
-  logger(logstream &, std::basic_ostream<CharT,Traits> &);
+  logger(loglevel &, std::basic_ostream<CharT,Traits> &);
 };
 
 } /* streamlog */
