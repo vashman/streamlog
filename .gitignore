@@ -29,3 +29,9 @@
 
 # Editor Files
 *.swp
+
+# Log files
+*.log
+
+# Build Directories
+/build/bin
