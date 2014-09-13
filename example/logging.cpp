@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../include/logging.hpp"
+#include "../include/logger.hpp"
 
 using streamlog::loglevel;
 using streamlog::logger;
