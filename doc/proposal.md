@@ -17,9 +17,9 @@
 
 2 Introduction
 ==========================================================================
-Logging that is easy to re-organize, whether adding new logging levels or
-removing levels without breaking the code. Also provide granular control
-over log filtering.
+Logging that is easy to extend and change, whether adding new logging
+levels or removing levels without breaking the code. Also provide granular
+control over log filtering.
 
 3 Motivation and Scope
 ==========================================================================
