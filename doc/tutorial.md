@@ -1,4 +1,4 @@
-Tutorial
+Streamlog Tutorial
 ==========================================================================
 Examples used in this tutorial are snippets of working examples found in
 the examples directory.
@@ -23,7 +23,8 @@ Log levels are an instance of the `loglevel` class. Each instance of the
 class Adds a level with a severity level one less than the previous.
 There for the most severe levels comes first.
 
-[example: loglevel.cpp](../example/loglevel.cpp)
+[example: create.cpp](../example/create.cpp)
+
 ```c++
 loglevel level_name;
 loglevel level_name2;
@@ -32,10 +33,10 @@ loglevel level_name2;
 Creating a `loglevel` with the same level as one all ready created,
 can be achieved by simply copy constructing a `loglevel`.
 
-[example: log_one_level.cpp](../example/log_one_level.cpp)
+[example: create.cpp](../example/create.cpp)
+
 ```c++
-loglevel level_name;
-loglevel level_name2(level_name);
+loglevel level_name3(level_name);
 ```
 
 2 Filtering log levels
@@ -63,6 +64,22 @@ loglevel lvl1;
 loglevel lvl2;
 
 lvl1.deactivate();
+```
+
+[example: const_filter_specfic.cpp](../example/const_filter_specific.cpp)
+```c++
+loglevel const lvl1(false);
+loglevel const lvl2;
+```
+
+4 Constant level
+--------------------------------------------------------------------------
+To create a constant loglevel that can not be activated or deactivated
+later on, simply `const` qualify the loglevel;
+
+[example: const_level.cpp](../example/const_level.cpp)
+```c++
+loglevel const lvl;
 ```
 
 3 Logging
