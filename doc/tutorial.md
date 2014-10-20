@@ -10,9 +10,10 @@ the examples directory.
   1. Creating log levels
   2. Filtering log levels
   3. Filtering specific level
+  4. Constant Levels
+  5. Checking Log Levels
 3. Logging
   1. Basic Logging
-  2. Logging to multiple locations
   3. Adding a new type to output
 
 2 Log Levels
@@ -72,14 +73,27 @@ loglevel const lvl3(false);
 loglevel const lvl4;
 ```
 
-4 Constant level
+4 Constant Levels
 --------------------------------------------------------------------------
 To create a constant loglevel that can not be activated or deactivated
 later on, simply `const` qualify the loglevel;
 
 [example: const_level.cpp](../example/const_level.cpp)
 ```c++
-loglevel const lvl;
+loglevel const fatel;
+```
+
+5 Checking Log Levels
+--------------------------------------------------------------------------
+Whether a particular loglevel is active or inactive can be checked via the
+member functions `is_active` and `is_inactive`.
+
+[example: checking.cpp](../example/checking.cpp)
+
+```c++
+  if (fatel.is_active() == true)
+
+  if (fatel.is_deactive() == true)
 ```
 
 3 Logging
@@ -87,14 +101,12 @@ loglevel const lvl;
 1 Basic Logging
 --------------------------------------------------------------------------
 [example: logging.cpp](../example/logging.cpp)
+
 ```c++
 logger(lvl1, std::clog) << "log text" << var;
 ```
 
-2 Logging to multiple locations
---------------------------------------------------------------------------
-
-3 Adding a new type to output
+2 Adding a new type to output
 --------------------------------------------------------------------------
 Adding a new type to output only requires and overload of the type for
 `std::basic_ostream`, overloading for the `logstream` class should not be
