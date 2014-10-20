@@ -9,7 +9,7 @@ loglevel lvl1;
 
 int var = 42;
 
-logger(lvl1, std::cout) << "log text" << var;
+logger(lvl1, std::clog) << "log text" << var;
 
 return 0;
 }
