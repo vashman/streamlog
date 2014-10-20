@@ -46,7 +46,7 @@ To filter all log levels by severity level, the static member function
 argument, All log levels higher than it (instantiated after it) are
 filtered out.
 
-[example: filter_global.cpp](../example/filter_global.cpp)
+[example: filter.cpp](../example/filter.cpp)
 ```c++
 loglevel lvl1;
 loglevel lvl2;
@@ -58,18 +58,18 @@ loglevel::setlevel(lvl1);
 --------------------------------------------------------------------------
 To filter out a specific level
 
-[example: filter_specfic.cpp](../example/filter_specific.cpp)
-```c++
-loglevel lvl1;
-loglevel lvl2;
+[example: filter.cpp](../example/filter.cpp)
 
+```c++
 lvl1.deactivate();
 ```
 
-[example: const_filter_specfic.cpp](../example/const_filter_specific.cpp)
+[example: filter.cpp](../example/filter.cpp)
+
 ```c++
-loglevel const lvl1(false);
-loglevel const lvl2;
+loglevel const lvl3(false);
+
+loglevel const lvl4;
 ```
 
 4 Constant level
