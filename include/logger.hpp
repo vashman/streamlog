@@ -16,6 +16,6 @@ template <typename CharT, typename Traits>
 streamlog::bits::logstream_stream<CharT,Traits> &
 logger(loglevel &, std::basic_ostream<CharT,Traits> &);
 
-}/* streamlog */
+} /* streamlog */
 #include "bits/logger.tcc"
 #endif
