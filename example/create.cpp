@@ -5,6 +5,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <iostream>
 #include "../include/loglevel.hpp"
 
 using streamlog::loglevel;
@@ -19,15 +20,15 @@ loglevel level_name2;
 /* copy construct a third instance */
 loglevel level_name3(level_name);
 
-  if (fatel.is_active()){
+  if (level_name.is_active()){
   std::cout << "starting and level_name is active" << std::endl;
   }
 
-  if (info.is_active()){
+  if (level_name2.is_active()){
   std::cout << "starting and info is active" << std::endl;
   }
 
-  if (debug.is_active()){
+  if (level_name3.is_active()){
   std::cout << "starting and debug is active" << std::endl;
   }
 

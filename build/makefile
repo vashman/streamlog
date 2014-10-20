@@ -1,6 +1,5 @@
 CC=/usr/bin/g++
-#FLAGS=-g -fno-rtti -std=c++11 -pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror -Wno-unused
-FLAGS=-g -std=c++11
+FLAGS=-g -fno-rtti -std=c++11 -pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror -Wno-unused
 
 BIN=./bin
 SRC=../src
@@ -15,8 +14,15 @@ EXSRC=$(wildcard $(EXDIR)/*.cpp)
 EXOBJS=$(patsubst %, $(EXOBJ)/%,$(notdir $(EXSRC:%.cpp=%.o)))
 EXAMPLES=$(patsubst %, $(BIN)/%, $(notdir $(EXSRC:%.cpp=%)))
 
-DLIB=$(LIBS)/lib.so
-SLIB=$(LIBS)/lib.a
+# install dirs
+INCDIR=/usr/local/include/streamlog
+LIBDIR=/usr/local/lib
+
+MAJOR=0
+MINOR=0
+LIB=libstreamlog
+DLIB=$(LIBS)/$(LIB).so.$(MAJOR).$(MINOR)
+SLIB=$(LIBS)/$(LIB).a.$(MAJOR).$(MINOR)
 
 .PHONY: clean all dirs lib example
 
@@ -65,3 +71,15 @@ dirs:
 example: $(EXAMPLES)
 
 lib: $(SLIB) $(DLIB)
+
+install: $(DLIB)
+	mkdir -p -m 655 $(INCDIR)
+	install -c $(DLIB) $(LIBDIR)
+	ldconfig -v -n $(LIBDIR)
+	ln -sf $(LIBDIR)/$(LIB).so.$(MAJOR).$(MINOR) $(LIBDIR)/$(LIB).$(MAJOR)
+	ln -sf $(LIBDIR)/$(LIB).so.$(MAJOR) $(LIBDIR)/$(LIB).so
+	cp -r ../include/* $(INCDIR)
+
+remove: $(LIBDIR)/$(LIB).so $(INCDIR)
+	rm -r $(INCDIR)
+	rm $(LIBDIR)/$(LIB).so*

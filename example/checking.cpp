@@ -8,6 +8,8 @@
 #include <iostream>
 #include "../include/loglevel.hpp"
 
+using streamlog::loglevel;
+
 int main(){
 try {
 
@@ -25,7 +27,7 @@ loglevel const debug;
   }
 
 std::cout << "The current loglevel is: " << loglevel::getlevel()
-  << std::endl
+  << std::endl;
 
   } catch (...) {
   return 1;
