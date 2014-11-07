@@ -1,6 +1,6 @@
 StreamLog
 ==========================================================================
-Status: Open Alpha
+Status: Open Alpha Development
 
 A logging libray that aims to offer granular control over what is logged
 and where its logged. It also allows creating logs relative to one
