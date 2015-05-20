@@ -13,27 +13,48 @@
 namespace streamlog {
 
 /**/
-template <typename CharT, typename Traits>
-streamlog::bits::logstream_stream<CharT, Traits> &
+template <
+  typename CharT
+, typename Traits
+>
+streamlog::bits
+::logstream_stream<CharT, Traits> &
 logger(
   loglevel & _log
-, std::basic_ostream<CharT,Traits> & _stream
+, std::basic_ostream<CharT,Traits>
+    & _stream
 ){
-streamlog::bits::logstream_base * iter = _log.log_obj;
+streamlog::bits::logstream_base * iter
+  = _log.log_obj;
 if (iter == nullptr){
   _log.log_obj
-    = new streamlog::bits::logstream_stream<CharT,Traits>(_stream);
-  _log.log_obj->active = _log.is_active();
-  return static_cast<streamlog::bits::logstream_stream<CharT,Traits> &>
+    = new streamlog::bits
+    ::logstream_stream<CharT,Traits>(
+      _stream
+    );
+  _log.log_obj->active
+    = _log.is_active();
+  return static_cast<
+  streamlog::bits
+  ::logstream_stream<CharT,Traits> &>
     (* _log.log_obj);
 }
 
-  while (iter->id !=
-           streamlog::bits::logstream_stream<CharT,Traits>::id()){
+  while (
+    iter->id
+  !=
+    streamlog::bits
+    ::logstream_stream<CharT,Traits>
+    ::id()
+  ){
     if (iter == nullptr){
-    iter = new streamlog::bits::logstream_stream<CharT,Traits>(_stream);
+    iter = new streamlog::bits
+    ::logstream_stream<CharT,Traits>(
+      _stream
+    );
     iter->active = _log.is_active();
-    return static_cast<streamlog::bits::logstream_stream<CharT,Traits> &>
+    return static_cast<streamlog::bits
+    ::logstream_stream<CharT,Traits> &>
       (* iter);
     }
   iter = iter->get_next();

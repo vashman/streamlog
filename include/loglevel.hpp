@@ -15,11 +15,14 @@ namespace streamlog {
 
 class loglevel{
 public:
-  /* unsigned int is used to avoid modulus with negative numbers when
-  checking activation, and deactivating the level. 
+  /* unsigned int is used to avoid
+    modulus with negative numbers when
+    checking activation, and
+    deactivating the level. 
   */
   typedef unsigned int lvl_type;
 
+  /* ctor */
   loglevel(
     bool _state = true
   );
@@ -31,11 +34,13 @@ public:
   );
 
 #if __cplusplus >= 201103L
+  /* loglevel */
   explicit
   loglevel(
     loglevel const &
   ) = default;
 
+  /* operator = */
   loglevel &
   operator=(
     loglevel const &
@@ -68,20 +73,34 @@ public:
   getlevel();
 
   static lvl_type
-  setlevel(loglevel const &);
+  setlevel(
+    loglevel const &
+  );
 
 private:
-	lvl_type lvl; // 0 equals an inactive log
+  /* 0 equals an inactive log */
+	 lvl_type lvl;
 
-  streamlog::bits::logstream_base * log_obj;
+  /* */
+  streamlog::bits::logstream_base
+  * log_obj;
 
+  /* current global log level */
   static lvl_type log_lvl;
 
+  /* total log levels */
   static lvl_type total;
 
-  template <typename CharT, typename Traits>
-  friend streamlog::bits::logstream_stream<CharT,Traits> &
-  logger(loglevel &, std::basic_ostream<CharT,Traits> &);
+  template <
+    typename CharT
+  , typename Traits
+  >
+  friend streamlog::bits
+    ::logstream_stream<CharT,Traits> &
+  logger(
+    loglevel &
+  , std::basic_ostream<CharT,Traits> &
+  );
 };
 
 } /* streamlog */

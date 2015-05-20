@@ -12,9 +12,17 @@
 
 namespace streamlog {
 
-template <typename CharT, typename Traits>
-streamlog::bits::logstream_stream<CharT,Traits> &
-logger(loglevel &, std::basic_ostream<CharT,Traits> &);
+/* logger */
+template <
+  typename CharT
+, typename Traits
+>
+streamlog::bits
+::logstream_stream<CharT,Traits> &
+logger(
+  loglevel &
+, std::basic_ostream<CharT,Traits> &
+);
 
 } /* streamlog */
 #include "bits/logger.tcc"
