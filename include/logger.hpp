@@ -17,7 +17,8 @@ template <
   typename CharT
 , typename Traits
 >
-streamlog::bits
+  streamlog
+::bits
 ::logstream_stream<CharT,Traits> &
 logger(
   loglevel &

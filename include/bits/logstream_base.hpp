@@ -12,7 +12,7 @@ namespace streamlog {
 namespace bits {
 
 /**/
-class logstream_base{
+class logstream_base {
 public:
   typedef int id_type;
 

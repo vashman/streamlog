@@ -16,9 +16,14 @@ namespace bits {
 
 /* logstream_stream
 */
-template <typename CharT, typename Traits>
-class logstream_stream : public logstream_base{
+template <
+  typename CharT
+, typename Traits
+>
+class logstream_stream
+  : public logstream_base {
 public:
+  /**/
   explicit
   logstream_stream(
     std::basic_ostream<CharT, Traits> &
@@ -59,7 +64,8 @@ public:
 #endif
 
 private:
-  std::basic_ostream<CharT,Traits> * stream;
+  std::basic_ostream<CharT,Traits>
+                         * stream;
 
   static typename logstream_base::id_type const log_id;
 };
