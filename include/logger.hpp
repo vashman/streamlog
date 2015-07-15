@@ -11,18 +11,15 @@
 #include "loglevel.hpp"
 
 namespace streamlog {
-
 /* logger */
 template <
-  typename CharT
-, typename Traits
+  bool Level = true
+, typename ostreamT
 >
-  streamlog
-::bits
-::logstream_stream<CharT,Traits> &
+bits::logstream<ostreamT>
 logger(
   loglevel &
-, std::basic_ostream<CharT,Traits> &
+, ostreamT &
 );
 
 } /* streamlog */

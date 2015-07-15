@@ -21,8 +21,7 @@ namespace streamlog {
 loglevel::loglevel(
   bool _state
 )
-  : lvl ((++loglevel::total)++)
-  , log_obj (nullptr) {
+: lvl ((++loglevel::total)++) {
   if (_state == false){
   this->deactivate();
   }
@@ -33,49 +32,53 @@ loglevel::loglevel(
   loglevel const & _lvl
 , bool _state
 )
-  : lvl (_lvl.lvl)
-  , log_obj (nullptr) {
+: lvl (_lvl.lvl) {
   if (_state == false){
   this->deactivate();
   }
 }
 
-/**/
+/* is_active */
 bool
 loglevel::is_active(
 ) const {
-  if (this->lvl != 0){
-    if (((this->lvl % 2) != 0) && (this->lvl <= loglevel::getlevel())){
-    return true;
-    }
-  }
-return false;
+/* Does not compare or check for a zero
+  value.
+*/
+return (
+  ((this->lvl % 2) != 0)
+&&
+  (this->lvl <= loglevel::getlevel())
+);
 }
 
-/**/
+/* is_deactive */
 bool
 loglevel::is_deactive(
 ) const {
 return !this->is_active();
 }
 
-/**/
+/* getlevel */
 typename loglevel::lvl_type
 loglevel::getlevel(
 ){
 return loglevel::log_lvl;
 }
 
+/* setlevel */
 typename loglevel::lvl_type
 loglevel::setlevel(
   loglevel const & _log
 ){
-typename loglevel::lvl_type temp = loglevel::log_lvl;
+typename loglevel::lvl_type
+temp = loglevel::log_lvl;
+
 loglevel::log_lvl = _log.lvl; 
 return temp;
 }
 
-/**/
+/* activate */
 void
 loglevel::activate(
 ){

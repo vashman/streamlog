@@ -8,7 +8,6 @@
 #ifndef STREAMLOG_LOGLEVEL_HPP
 #define STREAMLOG_LOGLEVEL_HPP
 
-#include <ostream>
 #include "bits/logstream_stream.hpp"
 
 namespace streamlog {
@@ -81,26 +80,11 @@ private:
   /* 0 equals an inactive log */
 	 lvl_type lvl;
 
-  /* */
-  streamlog::bits::logstream_base
-  * log_obj;
-
   /* current global log level */
   static lvl_type log_lvl;
 
   /* total log levels */
   static lvl_type total;
-
-  template <
-    typename CharT
-  , typename Traits
-  >
-  friend streamlog::bits
-    ::logstream_stream<CharT,Traits> &
-  logger(
-    loglevel &
-  , std::basic_ostream<CharT,Traits> &
-  );
 };
 
 } /* streamlog */
