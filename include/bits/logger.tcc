@@ -8,19 +8,18 @@
 #ifndef STREAMLOG_LOGGER_TCC
 #define STREAMLOG_LOGGER_TCC
 
-#include <limits>
-
 namespace streamlog {
 
 /* logger */
-template <typename ostreamT>
-bits::logstream_stream<ostreamT>
+template <bool Level, typename ostreamT>
+bits::logstream<Level,ostreamT> &
 logger(
   loglevel & _log
 , ostreamT & _stream
 ){
 return
-logstream(_stream, _log.is_active());
+bits::logstream<Level,ostreamT>
+(_stream, _log.is_active());
 }
 
 } /* streamlog */

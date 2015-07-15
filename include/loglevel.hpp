@@ -8,7 +8,7 @@
 #ifndef STREAMLOG_LOGLEVEL_HPP
 #define STREAMLOG_LOGLEVEL_HPP
 
-#include "bits/logstream_stream.hpp"
+#include "bits/logstream.hpp"
 
 namespace streamlog {
 

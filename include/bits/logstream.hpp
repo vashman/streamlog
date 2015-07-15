@@ -26,7 +26,7 @@ public:
   );
 
   template <typename T>
-  logstream<ostreamT> &
+  logstream<Level,ostreamT> &
   operator<<(
     T const &
   );
@@ -34,23 +34,23 @@ public:
 #if __cplusplus >= 201103L
   /* ctor copy */
   logstream(
-    logstream<ostreamT> const &
+    logstream<Level,ostreamT> const &
   ) = delete;
 
   /* assignment operator copy */
-  logstream<ostreamT> &
+  logstream<Level,ostreamT> &
   operator=(
-    logstream<ostreamT> const &
+    logstream<Level,ostreamT> const &
   ) = delete;
 
   /* move*/
   logstream(
-    logstream<ostreamT> &&
+    logstream<Level,ostreamT> &&
   ) = delete;
 
-  logstream<ostreamT> &
+  logstream<Level,ostreamT> &
   operator=(
-    logstream<ostreamT> &&
+    logstream<Level,ostreamT> &&
   ) = delete;
 #endif
 
@@ -59,19 +59,19 @@ private:
   bool const state;
 };
 
-/* logstream */
+/* logstream disabled */
 template <typename ostreamT>
-logstream<false,ostreamT> {
+class logstream<false,ostreamT> {
 public:
   /* ctor */
   explicit
   logstream(
-    ostreamT &
+    ostreamT const &
   , bool
   );
 
   template <typename T>
-  logstream<ostreamT> &
+  logstream<false,ostreamT> const &
   operator<<(
     T const &
   );
@@ -79,23 +79,23 @@ public:
 #if __cplusplus >= 201103L
   /* ctor copy */
   logstream(
-    logstream<ostreamT> const &
+    logstream<false,ostreamT> const &
   ) = delete;
 
   /* assignment operator copy */
-  logstream<ostreamT> &
+  logstream<false,ostreamT> &
   operator=(
-    logstream<ostreamT> const &
+    logstream<false,ostreamT> const &
   ) = delete;
 
   /* move*/
   logstream(
-    logstream<ostreamT> &&
+    logstream<false,ostreamT> &&
   ) = delete;
 
-  logstream<ostreamT> &
+  logstream<false,ostreamT> &
   operator=(
-    logstream<ostreamT> &&
+    logstream<false,ostreamT> &&
   ) = delete;
 #endif
 };
