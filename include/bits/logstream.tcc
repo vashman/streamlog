@@ -17,8 +17,7 @@ logstream<Level,ostreamT>::logstream (
   ostreamT & _stream
 , bool _state
 )
-: logstream_base ()
-, stream (& _stream)
+: stream (& _stream)
 , state (_state){
 }
 
@@ -27,8 +26,7 @@ template <typename ostreamT>
 logstream<false,ostreamT>::logstream (
   ostreamT const & _stream
 , bool _state
-)
-: logstream_base (){
+){
 }
 
 /* logstream_stream operator << */
@@ -49,7 +47,7 @@ template <typename T>
 logstream<false,ostreamT> const &
 logstream<false,ostreamT>::operator <<(
   T const & _value
-){
+) const {
 return *this;
 }
 

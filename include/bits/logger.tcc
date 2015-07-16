@@ -12,7 +12,7 @@ namespace streamlog {
 
 /* logger */
 template <bool Level, typename ostreamT>
-bits::logstream<Level,ostreamT> &
+bits::logstream<Level,ostreamT>
 logger(
   loglevel & _log
 , ostreamT & _stream

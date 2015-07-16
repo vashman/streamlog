@@ -8,15 +8,13 @@
 #ifndef STREAMLOG_BITS_LOGSTREAM_STREAM_HPP
 #define STREAMLOG_BITS_LOGSTREAM_STREAM_HPP
 
-#include "logstream_base.hpp"
-
 namespace streamlog {
 namespace bits {
 
 /* logstream_stream
 */
 template <bool Level, typename ostreamT>
-class logstream : public logstream_base{
+class logstream {
 public:
   /* ctor */
   explicit
@@ -31,27 +29,27 @@ public:
     T const &
   );
 
-#if __cplusplus >= 201103L
   /* ctor copy */
   logstream(
     logstream<Level,ostreamT> const &
-  ) = delete;
+  ) = default;
 
   /* assignment operator copy */
   logstream<Level,ostreamT> &
   operator=(
     logstream<Level,ostreamT> const &
-  ) = delete;
+  ) = default;
 
+#if __cplusplus >= 201103L
   /* move*/
   logstream(
     logstream<Level,ostreamT> &&
-  ) = delete;
+  ) = default;
 
   logstream<Level,ostreamT> &
   operator=(
     logstream<Level,ostreamT> &&
-  ) = delete;
+  ) = default;
 #endif
 
 private:
@@ -74,29 +72,29 @@ public:
   logstream<false,ostreamT> const &
   operator<<(
     T const &
-  );
+  ) const;
 
-#if __cplusplus >= 201103L
   /* ctor copy */
   logstream(
     logstream<false,ostreamT> const &
-  ) = delete;
+  ) = default;
 
   /* assignment operator copy */
   logstream<false,ostreamT> &
   operator=(
     logstream<false,ostreamT> const &
-  ) = delete;
+  ) = default;
 
+#if __cplusplus >= 201103L
   /* move*/
   logstream(
     logstream<false,ostreamT> &&
-  ) = delete;
+  ) = default;
 
   logstream<false,ostreamT> &
   operator=(
     logstream<false,ostreamT> &&
-  ) = delete;
+  ) = default;
 #endif
 };
 

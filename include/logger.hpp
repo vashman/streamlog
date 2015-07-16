@@ -16,7 +16,7 @@ template <
   bool Level = true
 , typename ostreamT
 >
-bits::logstream<Level,ostreamT> &
+bits::logstream<Level,ostreamT>
 logger(
   loglevel &
 , ostreamT &
