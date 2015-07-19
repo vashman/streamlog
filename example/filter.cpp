@@ -7,20 +7,21 @@
 
 #include <iostream>
 #include "../include/loglevel.hpp"
+#include "../src/loglevel.cpp"
 
 using streamlog::loglevel;
 
 int main(){
 try {
 
-loglevel lvl1;
-loglevel lvl2;
-loglevel const lvl3(false);
-loglevel const lvl4;
+loglevel<true> lvl1;
+loglevel<true> lvl2;
+loglevel<true> const lvl3(false);
+loglevel<true> const lvl4;
 
-loglevel::setlevel(lvl1);
+set_loglevel(lvl1);
 
-lvl1.deactivate();
+lvl1.disable();
   } catch(...) {
   return 1;
   }

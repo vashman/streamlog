@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "../include/loglevel.hpp"
+#include "../src/loglevel.cpp"
 
 using streamlog::loglevel;
 
@@ -15,21 +16,28 @@ int main(){
 try {
 
 /* create two loglevel instaces. */
-loglevel level_name;
-loglevel level_name2;
+loglevel<true> level_name;
+loglevel<true> level_name2;
+
 /* copy construct a third instance */
-loglevel level_name3(level_name);
+loglevel<true> level_name3(level_name);
 
-  if (level_name.is_active()){
-  std::cout << "starting and level_name is active" << std::endl;
+  if (level_name.is_enabled()){
+  std::cout
+  << "starting and level_name is active"
+  << std::endl;
   }
 
-  if (level_name2.is_active()){
-  std::cout << "starting and info is active" << std::endl;
+  if (level_name2.is_enabled()){
+  std::cout
+  << "starting and info is active"
+  << std::endl;
   }
 
-  if (level_name3.is_active()){
-  std::cout << "starting and debug is active" << std::endl;
+  if (level_name3.is_enabled()){
+  std::cout
+  << "starting and debug is active"
+  << std::endl;
   }
 
   } catch (...) {

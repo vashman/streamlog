@@ -19,7 +19,7 @@ namespace streamlog {
 typedef unsigned int loglevel_type;
 
 /* loglevel */
-template <bool Level = true>
+template <bool Level>
 class loglevel {};
 
 inline loglevel_type

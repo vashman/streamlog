@@ -7,41 +7,59 @@
 
 #include <iostream>
 #include "../include/loglevel.hpp"
+#include "../src/loglevel.cpp"
 
 using streamlog::loglevel;
 
 int main(){
 
 try {
+/* Once the loglevels have been set,
+  they cannot be disabled / enabled.
+*/
+loglevel<true> const fatel(false);
+loglevel<true> const info;
+loglevel<true> const debug(false);
 
-loglevel const fatel(false);
-loglevel const info;
-loglevel const debug(false);
-
-  if (fatel.is_active()){
-  std::cout << "starting and fatel is active" << std::endl;
+  if (fatel.is_enabled()){
+  std::cout
+  << "starting and fatel is active"
+  << std::endl;
   }
 
-  if (info.is_active()){
-  std::cout << "starting and info is active" << std::endl;
+  if (info.is_enabled()){
+  std::cout
+  << "starting and info is active"
+  << std::endl;
   }
 
-  if (debug.is_active()){
-  std::cout << "starting and debug is active" << std::endl;
+  if (debug.is_enabled()){
+  std::cout
+  << "starting and debug is active"
+  << std::endl;
   }
 
-loglevel::setlevel(debug);
+set_loglevel(debug);
 
-  if (fatel.is_active()){
-  std::cout << "after level set, fatel is still active" << std::endl;
+  if (fatel.is_enabled()){
+  std::cout
+  << "After level set, fatel is still"
+     " not active."
+  << std::endl;
   }
 
-  if (info.is_active()){
-  std::cout << "after level set, info is still active" << std::endl;
+  if (info.is_enabled()){
+  std::cout
+  << "After the loglevel is set, info"
+     " becomes active."
+  << std::endl;
   }
 
-  if (debug.is_active()){
-  std::cout << "after level set, debug is still active" << std::endl;
+  if (debug.is_enabled()){
+  std::cout
+  << "After level set, debug is still"
+     " not active."
+  << std::endl;
   }
 
   } catch (...) {

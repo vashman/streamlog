@@ -7,29 +7,40 @@
 
 #include <iostream>
 #include "../include/loglevel.hpp"
+#include "../src/loglevel.cpp"
 
 using streamlog::loglevel;
+using streamlog::get_loglevel;
 
 int main(){
 try {
 
-loglevel const fatel;
-loglevel const info;
-loglevel const debug;
+loglevel<true> const fatel;
+loglevel<true> const info;
+loglevel<true> const debug;
 
-  /**/
-  if (fatel.is_active() == true){
-  std::cout << "fatel is currently activated." << std::endl;
-  }
-
-  if (fatel.is_deactive() == true){
-  std::cout << "fatel is currently deactivate." << std::endl;
-  }
-
-std::cout << "The current loglevel is: " << loglevel::getlevel()
+  /* By default the global loglevel must
+    be enabled by the user.
+  */
+  if (fatel.is_enabled() == true){
+  std::cout
+  << "fatel is currently activated."
   << std::endl;
+  }
+
+  if (fatel.is_disabled() == true){
+  std::cout
+  << "fatel is currently deactivated."
+  << std::endl;
+  }
+
+std::cout
+<< "The current loglevel is: "
+<< get_loglevel()
+<< std::endl;
 
   } catch (...) {
+  std::clog << "Exception thrown";
   return 1;
   }
 return 0;
