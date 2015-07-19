@@ -12,40 +12,52 @@ namespace streamlog {
 namespace bits {
 
 /* logstream_stream ctor */
-template <bool Level, typename ostreamT>
-logstream<Level,ostreamT>::logstream (
-  ostreamT & _stream
+template <
+  bool Level
+, typename Output
+, typename Out
+>
+logstream<Level,Output,Out>::logstream (
+  Output & _stream
 , bool _state
+, Out const & _out
 )
 : stream (& _stream)
+, out (_out)
 , state (_state){
 }
 
 /* logstream_stream ctor disabled  */
-template <typename ostreamT>
-logstream<false,ostreamT>::logstream (
-  ostreamT const & _stream
+template <typename Output, typename Out>
+logstream<false,Output,Out>::logstream (
+  Output const & _stream
 , bool _state
+, Out const & _out
 ){
 }
 
 /* logstream_stream operator << */
-template <bool Level, typename ostreamT>
+template <
+  bool Level
+, typename Output
+, typename Out
+>
 template <typename T>
-logstream<Level,ostreamT> &
-logstream<Level,ostreamT>::operator <<(
+logstream<Level,Output,Out> &
+logstream<Level,Output,Out>::operator <<(
   T const & _value
 ){
   if (this->state == true){
-  *this->stream << _value;
+  this->out(*this->stream, _value);
   }
 return *this;
 }
 
-template <typename ostreamT>
+template <typename Output, typename Out>
 template <typename T>
-logstream<false,ostreamT> const &
-logstream<false,ostreamT>::operator <<(
+inline constexpr
+logstream<false,Output,Out> const &
+logstream<false,Output,Out>::operator<<(
   T const & _value
 ) const {
 return *this;

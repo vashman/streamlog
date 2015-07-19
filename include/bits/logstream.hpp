@@ -13,87 +13,95 @@ namespace bits {
 
 /* logstream_stream
 */
-template <bool Level, typename ostreamT>
+template <
+  bool Level
+, typename Output
+, typename Out
+>
 class logstream {
 public:
   /* ctor */
   explicit
   logstream(
-    ostreamT &
+    Output &
   , bool
+  , Out const &
   );
 
   template <typename T>
-  logstream<Level,ostreamT> &
+  logstream<Level,Output,Out> &
   operator<<(
     T const &
   );
 
   /* ctor copy */
   logstream(
-    logstream<Level,ostreamT> const &
+    logstream<Level,Output,Out> const &
   ) = default;
 
   /* assignment operator copy */
-  logstream<Level,ostreamT> &
+  logstream<Level,Output,Out> &
   operator=(
-    logstream<Level,ostreamT> const &
+    logstream<Level,Output,Out> const &
   ) = default;
 
 #if __cplusplus >= 201103L
   /* move*/
   logstream(
-    logstream<Level,ostreamT> &&
+    logstream<Level,Output,Out> &&
   ) = default;
 
-  logstream<Level,ostreamT> &
+  logstream<Level,Output,Out> &
   operator=(
-    logstream<Level,ostreamT> &&
+    logstream<Level,Output,Out> &&
   ) = default;
 #endif
 
 private:
-  ostreamT * stream;
+  Output * stream;
+  Out const & out;
   bool const state;
 };
 
 /* logstream disabled */
-template <typename ostreamT>
-class logstream<false,ostreamT> {
+template <typename Output, typename Out>
+class logstream<false,Output,Out> {
 public:
   /* ctor */
   explicit
   logstream(
-    ostreamT const &
+    Output const &
   , bool
+  , Out const &
   );
 
   template <typename T>
-  logstream<false,ostreamT> const &
+  inline constexpr
+  logstream<false,Output,Out> const &
   operator<<(
     T const &
   ) const;
 
   /* ctor copy */
   logstream(
-    logstream<false,ostreamT> const &
+    logstream<false,Output,Out> const &
   ) = default;
 
   /* assignment operator copy */
-  logstream<false,ostreamT> &
+  logstream<false,Output,Out> &
   operator=(
-    logstream<false,ostreamT> const &
+    logstream<false,Output,Out> const &
   ) = default;
 
 #if __cplusplus >= 201103L
   /* move*/
   logstream(
-    logstream<false,ostreamT> &&
+    logstream<false,Output,Out> &&
   ) = default;
 
-  logstream<false,ostreamT> &
+  logstream<false,Output,Out> &
   operator=(
-    logstream<false,ostreamT> &&
+    logstream<false,Output,Out> &&
   ) = default;
 #endif
 };

@@ -11,15 +11,20 @@
 namespace streamlog {
 
 /* logger */
-template <bool Level, typename ostreamT>
-bits::logstream<Level,ostreamT>
+template <
+  bool Level
+, typename Output
+, typename Out
+>
+bits::logstream<Level,Output,Out>
 logger(
-  loglevel & _log
-, ostreamT & _stream
+  loglevel<Level> & _log
+, Output & _stream
+, Out const & _out
 ){
 return
-bits::logstream<Level,ostreamT>
-(_stream, _log.is_active());
+bits::logstream<Level,Output,Out>
+(_stream, _log.is_enabled(), _out);
 }
 
 } /* streamlog */

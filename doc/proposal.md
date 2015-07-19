@@ -23,6 +23,11 @@ control over log filtering.
 
 3 Motivation and Scope
 ==========================================================================
+* Add new sinks
+* Add new log levels
+* Granular control over loglevels
+* Removing loglevels at compile time
+
 Logging libraries tend to offer a finite set of features where the user
 must create thier logs based on the concepts defined by the library, or
 more extensable feature set at the expensive of complexity and releabilty.
@@ -39,6 +44,10 @@ optional addtions.
 ==========================================================================
 1 log levels
 --------------------------------------------------------------------------
+* instance of a class
+* indiviual level activation / deactivation
+* global log levels
+
 Log levels are class instances that provide access to them selves and
 global log levels. Log levels are compared and expressed relative to other
 log levels. Levels may be copy constructed in order to more than one

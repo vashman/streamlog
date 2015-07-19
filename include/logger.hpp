@@ -11,15 +11,29 @@
 #include "loglevel.hpp"
 
 namespace streamlog {
+template <typename Output>
+struct leftshift {
+  template <typename T>
+  void
+  operator()(
+    Output & _out
+  , T const _var
+  ) const {
+  _out << _var;
+  }
+};
+
 /* logger */
 template <
-  bool Level = true
-, typename ostreamT
+  bool Level
+, typename Output
+, typename Out = leftshift<Output>
 >
-bits::logstream<Level,ostreamT>
+bits::logstream<Level,Output,Out>
 logger(
-  loglevel &
-, ostreamT &
+  loglevel<Level> &
+, Output &
+, Out const & _out = Out()
 );
 
 } /* streamlog */
