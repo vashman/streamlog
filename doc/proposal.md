@@ -39,19 +39,19 @@ optional addtions.
 
 4 Impact On the Standard
 ==========================================================================
+* Two additoanl headers called loglevel and logger.
+* Additon of one new type called loglvel_type.
 
 5 Desgin Decisions
 ==========================================================================
 1 log levels
 --------------------------------------------------------------------------
-* instance of a class
+* instance of a class is a loglevel
+* Log levels are compared and expressed relative to other log levels.
+* copy ctor / multiple instance of same level
 * indiviual level activation / deactivation
 * global log levels
-
-Log levels are class instances that provide access to them selves and
-global log levels. Log levels are compared and expressed relative to other
-log levels. Levels may be copy constructed in order to more than one
-equivilent instance of the same level.
+* disable at complie time
 
 ### 1 Distinct log levels
 Every log level created is distinct to the ones before it, such that any
@@ -93,7 +93,7 @@ user to break code only explictly with pointer.
 5 Logging Expressions
 --------------------------------------------------------------------------
 
-6 Changing Global Logging Structure 
+6 Changing Global Logging Structure
 --------------------------------------------------------------------------
 
 7 Adding Custom Logging Sinks
